@@ -27,14 +27,14 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signin') {
       return <Link to="/signup">sign up instead</Link>;
     } else {
-      return <Link to="/sigin">sign in instead</Link>;
+      return <Link to="/signin">sign in instead</Link>;
     }
   }
 
   renderErrors() {
     return(
       <ul>
-        {this.props.errors.map((error, i) => (
+        {this.props.errors && this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
           </li>
