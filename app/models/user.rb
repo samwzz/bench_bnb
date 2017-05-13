@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
-  validates :password, length: {minimum: 6, allow_null: true}
+  validates :username, uniqueness: true
+  validates :password, length: { minimum: 6, allow_null: true }
 
   attr_reader :password
 
@@ -31,6 +32,5 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
-    self.save
   end
 end

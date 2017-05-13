@@ -10,8 +10,7 @@ class Api::SessionsController < ApplicationController
       sign_in(user)
       redirect_to api_user_url(user)
     else
-      render json: [user.errors.full_messages], status: 422
-      render :new
+      render json: ["Invalid username/password combination"], status: 401
     end
   end
 
@@ -20,7 +19,7 @@ class Api::SessionsController < ApplicationController
       sign_out
       render json: {}
     else
-      render json: ["error"], status: 404
+      render json: ["Nobody signed in"], status: 404
     end
   end
 end
