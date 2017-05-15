@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import * as APIUtil from './util/bench_api_util';
+
+import fetchBenches from './actions/bench_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.fetchBenches = APIUtil.fetchBenches;
   let store;
   if (window.currentUser) {
     const preloadedState = { session: { currentUser: window.currentUser}};
@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+  window.fetchBenches = fetchBenches;
+  window.store = store;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);
 });
