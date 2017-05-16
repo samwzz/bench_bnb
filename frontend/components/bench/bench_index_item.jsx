@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
-class BenchIndexItem {
+class BenchIndexItem extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,3 +15,5 @@ class BenchIndexItem {
     );
   }
 }
+
+export default BenchIndexItem;
